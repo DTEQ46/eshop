@@ -4,11 +4,11 @@ import User from '../../../models/User';
 import dbConnect from '../../../utils/db';
 import { SignToken, isAuth } from '../../../utils/auth';
 import { NextApiRequest, NextApiResponse } from 'next';
-interface User {
+interface Users {
   _id: string;
 }
 interface CustomReq extends NextApiRequest {
-  user: User;
+  user: Users;
 }
 
 const handler = nc();

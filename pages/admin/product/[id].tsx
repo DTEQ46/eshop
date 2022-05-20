@@ -17,14 +17,11 @@ import {
   Checkbox,
 } from '@material-ui/core';
 import { getError } from '../../../utils/error';
-import { Store, IProduct } from '../../../utils/Store';
+import { Store } from '../../../utils/Store';
 import Layout from '../../../components/Layout';
 import useStyles from '../../../utils/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
-interface Params {
-  id: string;
-}
 
 function reducer(state: any, action: any) {
   switch (action.type) {
@@ -56,7 +53,7 @@ function reducer(state: any, action: any) {
   }
 }
 
-function ProductEdit({ params }) {
+function ProductEdit({ params }: any) {
   const productId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
@@ -446,7 +443,7 @@ function ProductEdit({ params }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params }: any) {
   return {
     props: { params },
   };

@@ -22,9 +22,6 @@ import Layout from '../../../components/Layout';
 import useStyles from '../../../utils/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
-interface Params {
-  id: string;
-}
 function reducer(state: any, action: any) {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -55,7 +52,7 @@ function reducer(state: any, action: any) {
   }
 }
 
-function UserEdit(params: Params) {
+function UserEdit({ params }: any) {
   const userId = params.id;
   const { state } = useContext(Store);
   const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
@@ -95,7 +92,7 @@ function UserEdit(params: Params) {
     }
   }, []);
 
-  const submitHandler = async (name: string) => {
+  const submitHandler = async (name: any) => {
     closeSnackbar();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
@@ -219,7 +216,7 @@ function UserEdit(params: Params) {
   );
 }
 
-export async function getServerSideProps(params: Params) {
+export async function getServerSideProps({ params }: any) {
   return {
     props: { params },
   };

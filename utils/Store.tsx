@@ -81,7 +81,7 @@ export const initialState: State = {
   darkMode: Cookies.get('darkMode') === 'ON' ? true : false,
   cart: {
     cartItems: Cookies.get('cartItems')
-      ? JSON.parse(Cookies.get('cartItems'))
+      ? JSON.parse(JSON.stringify(Cookies.get('cartItems')))
       : [],
     shippingAddress: Cookies.get('shippingAddress')
       ? Cookies.get('shippingAddress')

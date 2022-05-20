@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
-import { ActionKindPayAny, Store, Reg } from '../utils/Store';
+import { ActionKindPayAny, Store } from '../utils/Store';
 import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
@@ -41,7 +41,7 @@ export default function Register() {
     email,
     password,
     confirmPassword,
-  }: Reg) => {
+  }: any) => {
     closeSnackbar();
     if (password !== confirmPassword) {
       enqueueSnackbar("Passwords don't match", { variant: 'error' });

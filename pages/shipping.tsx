@@ -13,7 +13,7 @@ import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
 import CheckoutWizard from '../components/CheckoutWizard';
-import { ActionKindPayAny, Ship } from '../utils/Store';
+import { ActionKindPayAny } from '../utils/Store';
 
 export default function ShipFunc() {
   const {
@@ -48,7 +48,7 @@ export default function ShipFunc() {
     city,
     postalCode,
     country,
-  }: Ship) => {
+  }: any) => {
     dispatch({
       type: ActionKindPayAny.SAVE_SHIPPING_ADDRESS,
       payload: { fullName, address, city, postalCode, country, location },

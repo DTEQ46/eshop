@@ -15,7 +15,6 @@ import {
 import { getError } from '../utils/error';
 
 const defaultLocation = { lat: 45.516, lng: -73.56 };
-const libs = ['places'];
 
 function Map() {
   const router = useRouter();
@@ -110,7 +109,7 @@ function Map() {
   };
   return googleApiKey ? (
     <div className={classes.fullContainer}>
-      <LoadScript libraries={libs} googleMapsApiKey={googleApiKey}>
+      <LoadScript googleMapsApiKey={googleApiKey}>
         <GoogleMap
           id="sample-map"
           mapContainerStyle={{ height: '100%', width: '100%' }}

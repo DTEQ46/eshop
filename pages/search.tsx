@@ -46,12 +46,11 @@ export default function Search(props: any) {
   const {
     query = 'all',
     category = 'all',
-    brand = 'all',
     price = 'all',
     rating = 'all',
     sort = 'featured',
   } = router.query;
-  const { products, countProducts, categories, brands, pages } = props;
+  const { products, countProducts, categories, pages } = props;
 
   const filterSearch = ({
     page,
@@ -71,8 +70,8 @@ export default function Search(props: any) {
     if (category) query.category = category;
     if (price) query.price = price;
     if (rating) query.rating = rating;
-    if (min) query.min ? query.min : query.min === 0 ? 0 : min;
-    if (max) query.max ? query.max : query.max === 0 ? 0 : max;
+    if (min) query.min ? query.min : min;
+    if (max) query.max ? query.max : max;
 
     router.push({
       pathname: path,
@@ -82,11 +81,8 @@ export default function Search(props: any) {
   const categoryHandler = (e: any) => {
     filterSearch({ category: e.target.value });
   };
-  const pageHandler = (e: any, page: number) => {
+  const pageHandler = (e: any, page: any) => {
     filterSearch({ page });
-  };
-  const brandHandler = (e: any) => {
-    filterSearch({ brand: e.target.value });
   };
   const sortHandler = (e: any) => {
     filterSearch({ sort: e.target.value });
@@ -168,12 +164,10 @@ export default function Search(props: any) {
               {products.length === 0 ? 'No' : countProducts} Results
               {query !== 'all' && query !== '' && ' : ' + query}
               {category !== 'all' && ' : ' + category}
-              {brand !== 'all' && ' : ' + brand}
               {price !== 'all' && ' : Price ' + price}
               {rating !== 'all' && ' : Rating ' + rating + ' & up'}
               {(query !== 'all' && query !== '') ||
               category !== 'all' ||
-              brand !== 'all' ||
               rating !== 'all' ||
               price !== 'all' ? (
                 <Button onClick={() => router.push('/search')}>
@@ -206,7 +200,6 @@ export default function Search(props: any) {
           </Grid>
           <Pagination
             className={classes.mt1}
-            defaultPage={parseInt(query.page || '1')}
             count={pages}
             onChange={pageHandler}
           ></Pagination>
@@ -269,7 +262,6 @@ export async function getServerSideProps({ query }: any) {
       : { _id: -1 };
 
   const categories = await Product.find().distinct('category');
-  const brands = await Product.find().distinct('brand');
   const productDocs = await Product.find(
     {
       ...queryFilter,

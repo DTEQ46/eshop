@@ -149,7 +149,7 @@ function Order({ params }: any) {
         return orderID;
       });
   }
-  function onApprove(data: string, actions: any) {
+  function onApprove(data: any, actions: any) {
     return actions.order.capture().then(async function (details: string) {
       try {
         dispatch({ type: 'PAY_REQUEST' });

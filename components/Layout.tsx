@@ -248,12 +248,12 @@ export default function Layout({ title, description, children }: any) {
                     onClose={loginMenuCloseHandler}
                   >
                     <MenuItem
-                      onClick={(e) => loginMenuCloseHandler(e, '/profile')}
+                      onClick={(e: any) => loginMenuCloseHandler(e, '/profile')}
                     >
                       Profile
                     </MenuItem>
                     <MenuItem
-                      onClick={(e) =>
+                      onClick={(e: any) =>
                         loginMenuCloseHandler(e, '/order-history')
                       }
                     >
@@ -261,7 +261,7 @@ export default function Layout({ title, description, children }: any) {
                     </MenuItem>
                     {userInfo.isAdmin && (
                       <MenuItem
-                        onClick={(e) =>
+                        onClick={(e: any) =>
                           loginMenuCloseHandler(e, '/admin/dashboard')
                         }
                       >

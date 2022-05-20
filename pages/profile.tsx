@@ -20,12 +20,6 @@ import useStyles from '../utils/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 import Cookies from 'js-cookie';
-interface Info {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
 function Profile() {
   const { state, dispatch } = useContext(Store);
   const {
@@ -51,7 +45,7 @@ function Profile() {
     email,
     password,
     confirmPassword,
-  }: Info) => {
+  }: any) => {
     closeSnackbar();
     if (password !== confirmPassword) {
       enqueueSnackbar("Passwords don't match", { variant: 'error' });

@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import NextLink from 'next/link';
 import useStyles from '../utils/styles';
@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import { Controller, useForm } from 'react-hook-form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { ActionKindPayAny, Store, Log } from '../utils/Store';
+import { ActionKindPayAny, Store } from '../utils/Store';
 import { useSnackbar } from 'notistack';
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
     control,
     formState: { errors },
   } = useForm();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
   const classes = useStyles();
   const redirect = router.query; // login?redirect=/shipping
@@ -32,7 +32,7 @@ export default function Login() {
   if (userInfo) {
     router.push('/ ');
   }
-  const submitHandler = async ({ email, password }: Log) => {
+  const submitHandler = async ({ email, password }: any) => {
     try {
       const { data } = await axios.post('/api/users/login', {
         email,
@@ -119,7 +119,7 @@ export default function Login() {
             </Button>
           </ListItem>
           <ListItem>
-            Don't have an account? {''} &nbsp;
+            Don&#39;t have an account? {''} &nbsp;
             <NextLink href={`/register?redirect=${redirect || '/'}`} passHref>
               <Link>Register</Link>
             </NextLink>

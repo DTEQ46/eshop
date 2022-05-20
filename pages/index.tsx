@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import NextLink from 'next/link';
-import { Grid, Link, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import Layout from '../components/Layout';
 import dbConnect, { convertDocToObj } from '../utils/db';
 import Product from '../models/Product';
@@ -9,13 +8,10 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { Store, IProduct, ActionKindPayCart } from '../utils/Store';
 import ProductItem from '../components/ProductItem';
-import Carousel from 'react-material-ui-carousel';
-import useStyles from '../utils/styles';
 interface Props {
   topRatedProducts: IProduct[];
 }
 export default function Home(props: Props) {
-  const classes = useStyles();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { topRatedProducts } = props;

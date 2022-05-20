@@ -15,34 +15,30 @@ import {
   CardContent,
   CardActions,
 } from '@material-ui/core';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+// import {
+//   Chart as ChartJS,
+//   CategoryScale,
+//   LinearScale,
+//   BarElement,
+//   Title,
+//   Tooltip,
+//   Legend,
+// } from 'chart.js';
 
-import { Bar } from 'react-chartjs-2';
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+// import { Bar } from 'react-chartjs-2';
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   BarElement,
+//   Title,
+//   Tooltip,
+//   Legend
+// );
 
 import { getError } from '../../utils/error';
 import { Store } from '../../utils/Store';
 import Layout from '../../components/Layout';
 import useStyles from '../../utils/styles';
-interface X {
-  _id: string;
-  totalSales: number;
-}
 function reducer(state: any, action: any) {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -201,7 +197,7 @@ function AdminDashboard() {
                 </Typography>
               </ListItem>
               <ListItem>
-                <Bar
+                {/* <Bar
                   data={{
                     labels: summary.salesData.map((x: X) => x._id),
                     datasets: [
@@ -215,7 +211,7 @@ function AdminDashboard() {
                   options={{
                     legend: { display: true, position: 'right' },
                   }}
-                />
+                /> */}
               </ListItem>
             </List>
           </Card>

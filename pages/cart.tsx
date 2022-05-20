@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import { Store, IProduct } from '../utils/Store';
 import NextLink from 'next/link';
-import Image from 'next/image';
 import {
   Grid,
   TableContainer,
@@ -100,7 +99,7 @@ function CartScreen() {
                       <TableCell align="right">
                         <Select
                           value={item.quantity}
-                          onChange={(e) =>
+                          onChange={(e: any) =>
                             updateCartHandler(item, e.target.value)
                           }
                         >
