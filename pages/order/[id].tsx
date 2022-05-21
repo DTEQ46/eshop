@@ -129,6 +129,7 @@ function Order({ params }: any) {
             currency: 'USD',
           },
         });
+        paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
       };
       loadPaypalScript();
     }
